@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="show">
+    <!-- <div>홍길동</div>
+    <div>20</div> -->
+  </div>
+  <input id="name"><input id="age">
+  <button id="addBtn">입력</button>
+  <script>
+    let persons = [{
+      name: "홍길동",
+      age: 20
+    }, {
+      name: "김이슬",
+      age: 22
+    }];
+
+    // 페이지 로딩되는 시점에 생성.
+    let parent = document.createElement('div'); // <div></div>
+    let child = document.createTextNode('Hello, World');
+    parent.append(child); // <div>Hello, World</div>
+    let show = document.getElementById('show');
+    show.append(parent);
+    console.log(show);
+
+    // 버튼을 클릭하는 시점에 생성.
+    // let addBtn = document.querySelector('#addBtn');
+    // element.addEventListener('event type', function() {  })
+    // addBtn.addEventListener('click', addNameAge);
+
+    persons.forEach(function (person) {
+      addNameAge(person);
+    });
+
+    function addNameAge(person = {
+      name: 'Hong',
+      age: 20
+    }) { // name, age
+      // name, age 값.
+      let name = person.name; //document.querySelector('#name').value;
+      let age = person.age; //document.querySelector('#age').value;
+
+      let div = document.createElement('div');
+      let nameTxt = document.createTextNode(name);
+      div.append(nameTxt);
+      show.append(div);
+
+      div = document.createElement('div');
+      nameTxt = document.createTextNode(age);
+      div.append(nameTxt);
+      show.append(div);
+    }
+  </script>
+</body>
+
+</html>

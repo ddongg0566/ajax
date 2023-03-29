@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object.html</title>
+</head>
+
+<body>
+  <script>
+    // 객체:속성 + 객체:기능(메소드)
+
+    let obj = {
+      id: 1001,
+      name: 'Hong'
+    }
+    obj.score = 90;
+    obj.height = 167.8;
+    obj.hobbies = ['sleeping', 'eating', 'reading'];
+    obj.freinds = [{
+      id: 1002,
+      name: 'Hwang'
+    }, {
+      id: 1003,
+      name: 'Choi'
+    }]
+
+    obj.freinds[2] = {
+      id: 1004,
+      name: 'Park'
+    }
+
+    obj.showScore = function () {
+      console.log('점수는 ' + this.score + '입니다');
+    }
+
+    console.log('2번째 친구이름: ', obj.freinds[1].name);
+    console.log('3번째 친구이름: ', obj.freinds[2].name);
+    console.log(obj.hobbies[0]);
+    console.log(obj.id);
+    console.log(obj['name']);
+    obj.showScore(); // 메소드 호출.
+
+    // object 타입일 경우에 각각의 속성정보
+    for (let prop in obj) {
+      console.log('속성: ', prop, ', 값: ' + obj[prop]);
+    }
+
+    // 친구들의 정보 출력(반복문) {id, name}
+    obj.freinds.forEach(function (friend) {
+      // console.log(friend); // 아이디는 1002입니다.
+      console.log('아이디는 ' + friend.id + '이고, 이름은 ' + friend['name'] + '입니다');
+
+    });
+  </script>
+</body>
+
+</html>
