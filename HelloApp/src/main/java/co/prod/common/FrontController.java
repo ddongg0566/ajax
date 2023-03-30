@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.prod.controller.CalendarAdd;
+import co.prod.controller.CalendarForm;
+import co.prod.controller.CalendarList;
+import co.prod.controller.CalendarRemove;
 import co.prod.controller.ChartAjax;
 import co.prod.controller.ChartControl;
+import co.prod.controller.CovidForm;
+import co.prod.controller.MapForm;
 import co.prod.controller.MemberAddAjax;
 import co.prod.controller.MemberListAjax;
 import co.prod.controller.MemberListControl;
@@ -65,7 +71,19 @@ public class FrontController extends HttpServlet {
 		map.put("/chart.do", new ChartControl());
 		//chart 데이터
 		map.put("/chartAjax.do", new ChartAjax());
-	}
+		//covid 
+		map.put("/covid19.do", new CovidForm());
+		//mapapi
+		map.put("/map.do" , new MapForm());
+		
+		map.put("/calendar.do", new CalendarForm());
+		
+		map.put("/calendarList.do", new CalendarList());
+		
+		map.put("/calendarAdd.do", new CalendarAdd());
+		
+		map.put("/calendarRemove.do", new CalendarRemove());
+	}	
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

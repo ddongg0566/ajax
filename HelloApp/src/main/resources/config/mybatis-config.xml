@@ -14,6 +14,7 @@
 	<typeAliases>
 		<typeAlias type="co.prod.vo.ProductVO" alias="ProductVO" />
 		<typeAlias type="co.prod.vo.ReplyVO" alias="ReplyVO" />
+		<typeAlias type="co.prod.vo.CalendarVO" alias="CalendarVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -31,6 +32,7 @@
 	<mappers>
 		<mapper resource="co/prod/mapper/ProductMapper.xml" />
 		<mapper resource="co/prod/mapper/MemberMapper.xml" />
+		<mapper resource="co/prod/mapper/CalendarMapper.xml" />
 	</mappers>
 
 </configuration>

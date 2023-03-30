@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.prod.mapper.CalendarMapper">
+
+<select id="selectCalendar" resultType="co.prod.vo.CalendarVO">
+	select * from full_calendar
+
+</select>
+
+<insert id="insertCal" parameterType="CalendarVO">
+	insert into full_calendar values (#{title},#{startDate},#{endDate})
+
+</insert>
+
+<delete id="deleteCal" parameterType="string">
+	delete from full_calendar
+	where title = #{title}
+</delete>
+
+</mapper>
