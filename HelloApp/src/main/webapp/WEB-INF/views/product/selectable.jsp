@@ -65,13 +65,11 @@
         /////
         eventClick: function (arg) {
           if (confirm('Are you sure you want to delete this event?')) {
-            fetch('calendarRemove.do?title=' + 
-)
+            fetch('calendarRemove.do?title=' + title)
         	  .then(resolve =>resolve.json())
         	  .then(result =>{
         		   
-        		  result =arg;
-        		  
+        		        		  
         		  
         		  
         	  })

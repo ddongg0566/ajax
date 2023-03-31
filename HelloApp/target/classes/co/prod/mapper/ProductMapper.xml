@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.prod.mapper.ProductMapper">
+	<select id="productList" resultType="ProductVO">
+		select * from product
+	</select>
+
+	<select id="selectProduct" parameterType="string">
+		select * from product
+		where product_code = #{code}
+	</select>
+
+	<select id="replyList" parameterType="string" resultType="ReplyVO">
+		select * from product_reply
+		where product_code = #{code}
+	</select>
+
+	<delete id="deleteReply" parameterType="int">
+		delete from product_reply
+		where reply_no = #{replyId}
+	</delete>
+
+	<insert id="insertReply" parameterType="ReplyVO">
+	    <selectKey keyProperty="replyNo" resultType="int" order="BEFORE">
+	        select reply_seq.nextval from dual
+	    </selectKey>
+		insert into product_reply (reply_no, reply_writer, reply_content, product_code)
+		values(#{replyNo}, #{replyWriter}, #{replyContent}, #{productCode} )
+	</insert>
+	
+	<select id="selectReply" parameterType="int">
+	Select * from product_reply
+	where reply_no =#{replyNo}
+	</select>
+	<update id="updateReply" parameterType="ReplyVO">
+	update product_reply set reply_content = #{replyContent}
+	where reply_no = #{replyNo}
+	</update>
+	
+	<select id="chartInfo" resultType="map">
+	select department_name as "departmentName", count(*) as "cnt" 
+	from employees e
+	join departments d
+	on e.department_id = d.department_id
+	group by department_name
+	
+	</select>
+</mapper>

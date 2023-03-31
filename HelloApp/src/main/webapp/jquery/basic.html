@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+ 
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>jquery/basic.html</title>
+
+    <!-- <script src="jquery-3.6.4.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+
+    
+        //$() => jquery 객체: 
+        //자바스크립트: 객체(document object model): document.children, document.querySelector()
+      
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------
+        // $(function() {
+        //     console.log(document.querySelector('p:nth-of-type(2)'));
+        //     console.log($("p:eq(0)"));
+        //     $("p").on("click", function() { //.on은 event 등록하는 요소 "p" 안에 등록을 한다 = document.qeurySelectorAll('p').forEach(function(pTag){ pTag.addEvenetListener('click',function(){pTag.style.color='red';})  })
+        
+        //        $("p").css("color", "red");//style {'font':bold, 'color':'red','background'}
+        
+        //     });
+        
+        // });
+              
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+         //this: (객체: 객체자신, 함수:전역객체(window, 이벤트: event.target)) 
+         //document
+         console.log(document); // 자바스크립트 document
+        console.log($(document)); // jquery 용 document
+        
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------
+        $(document).ready(function(){
+
+        });
+        
+        function callWindow(){
+            console.log(this);
+        }
+
+        callWindow();
+
+
+        let obj={
+            name:"홍길동",
+            age : 20,
+            showAge : function(){
+                console.log("이름은" + this.name+" 나이는 " + this.age);
+            }
+        }
+        obj.showAge();
+
+        $(function() {
+            console.log(this); //window -> document
+            console.log(document.querySelector('p:nth-of-type(2)'));
+            console.log($("p:eq(0)"));
+            $("P").on("click", function() { //.on은 event 등록하는 요소 "p" 안에 등록을 한다 = document.qeurySelectorAll('p').forEach(function(pTag){ pTag.addEvenetListener('click',function(){pTag.style.color='red';})  })
+        
+               $(this).css("color", "red");//style {'font':bold, 'color':'red','background'}
+        
+            });
+        
+        });
+        
+
+        
+        
+        </script>
+
+</head>
+<body>
+    
+    <p>이제부터 제이쿼리를 다 같이 공부해보죠!!<br>
+
+    마우스로 글씨를 클릭해보세요!!</p>
+        <p>2번제 p태그</p>
+</body>
+
+ 
+</html>
