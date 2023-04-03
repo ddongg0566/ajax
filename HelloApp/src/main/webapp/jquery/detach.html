@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script>
+    $(document).ready(function () {
+        $('button:eq(0)').on('click', function () {
+            $('select[name="right"]').append($('select[name="left"]>option:selected'));
+        })
+        $('button:eq(1)').on('click', function () {
+            $('select[name="left"]').append($('select[name="right"]>option:selected'));
+        })
+    })
+</script>
+
 <body>
-    <select name = "left" multiple style = "height:100px;">
-    <option value ="">item1</option>
-    <option value ="">item2</option>
-    <option value ="">item3</option>
-    <option value ="">item4</option>
-    <option value ="">item5</option>
+    <select name="left" multiple style="height:100px;">
+        <option value="">item1</option>
+        <option value="">item2</option>
+        <option value="">item3</option>
+        <option value="">item4</option>
+        <option value="">item5</option>
 
-</select>
+    </select>
 
-<button>+</button>
-<button>-</button>
+    <button>+</button>
+    <button>-</button>
 
-    <select name = "right" multiple style = "height:100px;">
-    <option value ="">item7</option>
-    <option value ="">item8</option>
-    <option value ="">item9</option>
-    <option value ="">item10</option>
-    <option value ="">item11</option>
+    <select name="right" multiple style="height:100px;">
+        <option value="">item7</option>
+        <option value="">item8</option>
+        <option value="">item9</option>
+        <option value="">item10</option>
+        <option value="">item11</option>
 
-</select>
+    </select>
 
 </body>
+
 </html>

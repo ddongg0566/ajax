@@ -33,6 +33,7 @@
 		<mapper resource="co/prod/mapper/ProductMapper.xml" />
 		<mapper resource="co/prod/mapper/MemberMapper.xml" />
 		<mapper resource="co/prod/mapper/CalendarMapper.xml" />
+		<mapper resource="co/prod/mapper/MembersMapper.xml" />
 	</mappers>
 
 </configuration>

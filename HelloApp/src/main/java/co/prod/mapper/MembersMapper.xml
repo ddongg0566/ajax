@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.prod.mapper.MembersMapper">
+  
+  <select id="getMembers" resultType="co.prod.vo.MembersVO">
+    select * from members order by member_id desc
+</select>
+ <insert id="insertMember" parameterType="co.prod.vo.MembersVO">
+    insert into members (member_id, member_name, member_tel, member_addr, member_pw)
+    values(#{memberId}, #{memberName}, #{memberTel}, #{memberAddr}, #{memberPw})
+  </insert>
+  
+  <update id="deleteMembers" parameterType="co.prod.vo.MembersVO">
+  delete from members
+  <foreach collection="list" item="item" open="where member_id in(" close=")" separator=",">
+  #{item.memberId}
+  </foreach>
+  </update>
+</mapper>
