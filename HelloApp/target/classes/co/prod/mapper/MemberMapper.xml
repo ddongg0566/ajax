@@ -22,5 +22,21 @@
     insert into members (id, name, passwd, mail, auth)
     values(#{id}, #{name}, #{passwd}, #{mail}, #{auth})
   </insert>
-
+	
+	
+	
+	<select id="selectEmployees" resultType="co.prod.vo.EmpVO">
+		select * from employees order by employee_id
+	
+	</select>
+	
+	<insert id="insertMembers" parameterType="co.prod.vo.EmpVO">
+		<selectKey keyProperty="employeeId" resultType="int" order="BEFORE">
+		select employees_seq.nextval from dual
+		</selectKey>
+	insert into employees (employee_id, first_name, last_name, email, job_id, hire_date, salary)
+  values(#{employeeId},#{firstName} , #{lastName}, #{email}, 'IT_PROG', #{hireDate}, #{salary})
+	
+	</insert>
+	
 </mapper>

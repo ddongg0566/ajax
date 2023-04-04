@@ -9,4 +9,6 @@ public interface MembersMapper {
 	public List<MembersVO> getMembers();
 	// 회원등록.
 	public int insertMember(MembersVO vo);
+	
+	public int deleteMembersAry(String[] users);
 }

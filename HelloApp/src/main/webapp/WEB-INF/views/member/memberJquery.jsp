@@ -74,18 +74,37 @@
 
         }
         //선택삭제 기능
-        $('#delSelected').on('click', function (event) {
-            event.preventDefault();
-			
-            $('#list input:checked').each(function (idx, item) {
-                console.log(item);
-
-                $(item).parent().parent().remove();
-            
+       $('#delSelected').on('click', function (e) {
+                e.preventDefault();
+                let memberIdAray = '';
+                console.log($('#list input:checked'));
+                $('#list input:checked').each(function (idx, item) {
+                	
+                	console.log($(item).parent().parent().attr('id'));
+                    //memberIdAray.push({'memberId':$(item).parent().parent().memberId})
+                	memberIdAray += '&memberId='+ $(item).parent().parent().attr('id');
+                    //$(item).parentsUntil('tbody').remove();
+                })
+					console.log(memberIdAray);
                 
+                	// ajax호출
+                	$.ajax({
+                		url:'memberRemoveJquery.do', //호출할 컨트롤
+                		method:'post',
+                		data: memberIdAray.substring(1),
+                		success: function(result){
+                			if(result.retCode = 'Success')
+                				
+                			$('#list input:checked').closest('tr').remove();
+                			else
+                				alert('error!!');
+                		},
+                		error: function(reject){
+                			console.log(reject)
+                		}
+                	})
+                	
             })
-
-        })
 	//전체 선택
         $('th>input[type="checkbox"]').on('change', function () {
             $('td>input').prop({
@@ -128,7 +147,8 @@
                                 $('<td />').text($('#addr').val()),
                                 $('<td />').text($('#tel').val()),
                                 $('<td />').append($('<button />').text('삭제').on(
-                                    'click', rowDeleteFnc))
+                                    'click', rowDeleteFnc)),
+                                $('<td />').append('<input type="checkbox" />')
                             )
                         );
                 		//성공

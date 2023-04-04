@@ -22,6 +22,11 @@ public class MembersServiceMybatis implements MembersService {
 		// TODO Auto-generated method stub
 		return mapper.insertMember(vo) == 1;
 	}
+	@Override
+	public boolean removeMembersAry(String[] users) {
+		// TODO Auto-generated method stub
+		return mapper.deleteMembersAry(users) >0;
+	}
 	
 
 }

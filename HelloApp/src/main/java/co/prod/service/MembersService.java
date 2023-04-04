@@ -10,4 +10,6 @@ public interface MembersService {
 		
 	//회원등록
 		public boolean addMember(MembersVO vo);
+		
+		public boolean removeMembersAry(String[] users);
 }
